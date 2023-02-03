@@ -7,7 +7,7 @@
 			alert('Загаданное число меньше,введите новый варинт')
 			qwestion()
 		}
-		else if(number < n && number != 0) {
+		else if (number < n && number != 0) {
 			alert('Загаданное число больше,введите новый варинт')
 			qwestion()
 		}
@@ -18,7 +18,7 @@
 			alert("Введи число!")
 			qwestion()
 		}
-		else if( number == null && number === 0 ) {
+		else if(number === 0) {
 			alert('Игра окончена!')
 			
 		}
