@@ -5,19 +5,16 @@ const todoList = document.querySelector('.todo-list')
 const todoCompleted = document.querySelector('.todo-completed')
 const headerButton = document.querySelector('.header-button')
 
+	let toDoData = []
+	localStorage.setItem('item',JSON.stringify(toDoData))
+	toDoData = JSON.parse(localStorage.getItem('item'))
+	console.log(toDoData);
 
-const toDoData = []
-// const toDoDataObj = JSON.parse(localStorage.getItem("toDoData"))
-// console.log(JSON.parse(localStorage.getItem("toDoData")));
-
-
+ 
 const render = function(){
 	todoList.innerHTML = ''
 	todoCompleted.innerHTML = ''
-	
-	localStorage.setItem('toDoData',JSON.stringify(toDoData))		
-
-	const toDoDataObj = JSON.parse(localStorage.getItem("toDoData"))
+	 
 
 	toDoData.forEach(function(item){
 
@@ -39,12 +36,10 @@ const render = function(){
 		item.completed = !item.completed
 		render()
 	})
-
+//удаление по корзине
 	li.querySelector('.todo-remove').addEventListener('click',function(){
 		li.classList.remove('todo-item')
 		li.innerHTML = ''
-		
-	
 	})
 	})
 }
@@ -54,12 +49,11 @@ const render = function(){
 todoControl.addEventListener('submit',function(event){
 	event.preventDefault()
 	
-
-
 	const newToDo = {
 	text:headerInput.value,   
 	completed:false
 }
+
 	console.log(headerInput.value === '');
 	if(headerInput.value === '' ){
 	headerButton.disabled = true
@@ -69,8 +63,8 @@ todoControl.addEventListener('submit',function(event){
 		toDoData.push(newToDo)
 		headerInput.value = ''
 		render()
-
-		
-}
+		}
+		localStorage.setItem('item',JSON.stringify(toDoData))
 	
 })
+
